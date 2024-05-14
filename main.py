@@ -61,12 +61,12 @@ if selected == 'EDA':
         st.subheader("Distribusi Data Berdasarkan Nama")
 
         # Menghitung 10 nama dengan laba terbesar
-        top_names = data.groupby('Nama')['Laba'].sum().nlargest(10).index
+        top_names = data.groupby('Nama')['Jual'].sum().nlargest(10).index
 
         # Memfilter data untuk hanya mencakup 10 nama 
         filtered_data = data[data['Nama'].isin(top_names)]
 
-        pilih_column = st.selectbox("Pilih Kolom", ['Modal', 'Laba'])
+        pilih_column = st.selectbox("Pilih Kolom", ['Modal', 'Jual'])
 
         # Menggunakan grafik batang
         fig = px.bar(filtered_data, x='Nama', y=pilih_column, color='Nama', title=f"Hubungan Nama dengan {pilih_column} untuk 10 Nama dengan Laba Tertinggi")
